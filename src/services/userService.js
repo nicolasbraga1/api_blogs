@@ -5,4 +5,9 @@ const createUser = async ({ displayName, email, password, image }) => {
   return create;
 };
 
-module.exports = { createUser };
+const findAll = async () => {
+  const users = await User.findAll({ attributes: { exclude: 'password' } });
+  return { type: null, status: 200, message: users };
+};
+
+module.exports = { createUser, findAll };
